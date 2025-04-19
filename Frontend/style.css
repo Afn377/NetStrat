@@ -419,6 +419,10 @@ section {
   transform: translateX(-50%);
 }
 
+.survey-h1 {
+  left: 38% !important;
+}
+
 .about-section h1::after,
 .contact-section h1::after,
 .survey-section h1::after {
@@ -899,4 +903,169 @@ footer::before {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+.survey-section {
+  padding: 4rem 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.survey-section h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.survey-description {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.survey-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.form-group label span {
+  color: red;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  align-self: center;
+  padding: 0.75rem 2rem;
+  background-color: #062a85;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #1c4ed8;
+}
+
+/* Animation support */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.radio-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.radio-buttons label {
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}
+
+.radio-buttons input[type="radio"] {
+  accent-color: var(--primary-light);
+  margin-right: 0.5rem;
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+}
+
+.radio-buttons label,
+.radio-scale label {
+  color: white;
+  font-weight: 500;
+  margin-right: 15px;
+}
+
+.radio-buttons input[type="radio"],
+.radio-scale input[type="radio"] {
+  margin-right: 5px;
+  accent-color: white; /* Optional: makes the radio dot white too in supported browsers */
+}
+
+.radio-scale {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.scale-radio-group {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin-top: 10px;
+}
+
+.scale-radio-group label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.scale-radio-group input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-top: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: border 0.2s ease;
+}
+
+.scale-radio-group input[type="radio"]:checked {
+  background-color: var(--blue-400);
+  border-color: var(--blue-400);
+}
+
+.scale-radio-group span {
+  font-size: 14px;
+  color: white;
+}
+
+.scale-radio-group > label > span {
+  color: white;
+  font-size: 14px;
 }
