@@ -19,6 +19,9 @@
   --blue-100: #d1deef;
   --blue-50: #e8f0fa;
 
+  --navy: #233652; /* New navy color */
+  --light-bg: #e0e1dc; /* New light background color */
+
   --black: #000000;
   --gray-900: #121212;
   --gray-800: #1f1f1f;
@@ -30,21 +33,28 @@
   --white-200: #e9ecef;
   --white-300: #dee2e6;
 
+  /* Social Media Colors */
+  --linkedin: #0077b5;
+  --instagram: #e1306c;
+  --twitter: #1da1f2;
+  --facebook: #1877f2;
+  --youtube: #ff0000;
+
   /* Main theme colors */
-  --primary-dark: var(--blue-900);
-  --primary-medium: var(--blue-700);
+  --primary-dark: var(--navy);
+  --primary-medium: var(--navy);
   --primary-light: var(--blue-500);
   --accent: var(--blue-400);
   --accent-light: var(--blue-300);
-  --dark-background: var(--gray-900);
-  --card-background: var(--blue-900);
-  --light-background: var(--white);
+  --dark-background: var(--navy);
+  --card-background: var(--navy);
+  --light-background: var(--light-bg);
   --text-light: var(--white);
   --text-muted: var(--white-300);
-  --text-dark: var(--gray-800);
+  --text-dark: var(--black);
 
   /* Improved Typography */
-  --font-heading: "Montserrat", sans-serif;
+  --font-heading: "Times New Roman", serif;
   --font-body: "Open Sans", sans-serif;
 
   /* Animation Variables */
@@ -56,8 +66,8 @@
 
 /* Global Styles */
 body {
-  background-color: var(--dark-background);
-  color: var(--text-light);
+  background-color: var(--light-background);
+  color: var(--text-dark);
   font-family: var(--font-body);
   line-height: 1.7;
   padding-top: 80px;
@@ -71,6 +81,8 @@ main {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  background-color: var(--light-background);
+  color: var(--text-dark);
 }
 
 h1,
@@ -83,6 +95,7 @@ h6 {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  color: var(--text-dark);
 }
 
 /* Subtle Background Pattern */
@@ -93,16 +106,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(
-      circle at 25px 25px,
-      rgba(255, 255, 255, 0.01) 2px,
-      transparent 0
-    ),
-    radial-gradient(
-      circle at 75px 75px,
-      rgba(255, 255, 255, 0.01) 2px,
-      transparent 0
-    );
+  background-image: radial-gradient(circle at 25px 25px, rgba(0, 0, 0, 0.01) 2px, transparent 0),
+    radial-gradient(circle at 75px 75px, rgba(0, 0, 0, 0.01) 2px, transparent 0);
   background-size: 100px 100px;
   pointer-events: none;
   z-index: -1;
@@ -113,7 +118,7 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  background: rgba(12, 30, 53, 0.85);
+  background: var(--navy);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -124,13 +129,13 @@ header {
 
 header.scrolled {
   padding: 0.5rem 0;
-  background: rgba(12, 30, 53, 0.95);
+  background: var(--navy);
 }
 
 .navbar {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 1rem 1rem 2rem 1rem 0; /* Removed left padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -139,20 +144,20 @@ header.scrolled {
 .logo {
   display: flex;
   align-items: center;
-  padding-left: 0; /* Ensure no padding on the left */
-  margin-left: 0; /* Ensure no margin on the left */
+  padding-left: 2rem; /* Added explicit padding to the logo */
 }
 
 .logo-link {
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding-left: 0;
 }
 
 .logo img {
-  height: 40px;
+  height: 60px;
   margin-right: 0.75rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
   filter: drop-shadow(0 0 8px rgba(67, 119, 184, 0.3));
   transition: transform var(--transition-medium) var(--cubic-bezier);
 }
@@ -172,7 +177,7 @@ header.scrolled {
   list-style: none;
   display: flex;
   gap: 2rem;
-  padding-right: 2rem; /* Added padding to the right side of nav links */
+  padding-right: 2rem;
 }
 
 .nav-links li a {
@@ -219,7 +224,7 @@ header.scrolled {
   border: none;
   cursor: pointer;
   z-index: 1001;
-  margin-right: 1rem; /* Added margin to prevent touching the edge */
+  margin-right: 1rem;
 }
 
 .menu-icon {
@@ -283,7 +288,7 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+  background: var(--light-background);
   position: relative;
   overflow: hidden;
 }
@@ -296,16 +301,8 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-      circle at 20% 30%,
-      rgba(67, 119, 184, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(102, 145, 201, 0.15) 0%,
-      transparent 50%
-    );
+  background: radial-gradient(circle at 20% 30%, rgba(35, 54, 82, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(35, 54, 82, 0.05) 0%, transparent 50%);
   z-index: 1;
 }
 
@@ -316,31 +313,36 @@ section {
   left: 0;
   width: 100%;
   height: 150px;
-  background: linear-gradient(to top, var(--dark-background), transparent);
+  background: linear-gradient(to top, var(--light-background), transparent);
   z-index: 2;
 }
 
 .hero-content {
   z-index: 3;
-  max-width: 800px;
+  max-width: 800px; /* Increased from 800px to accommodate larger logo */
   padding: 0 2rem;
 }
 
-.hero-title {
-  font-family: var(--font-heading);
-  font-size: 4.5rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  color: #f5f8fc;
+/* New Hero Logo Container */
+.hero-logo-container {
+  margin-bottom: 2rem;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1s var(--cubic-bezier) forwards 0.2s;
 }
 
+.hero-logo {
+  max-width: 70%;
+  height: auto;
+  max-height: 600px; /* Significantly increased from 350px */
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
 .hero-subtitle {
   font-size: 1.3rem;
   margin-bottom: 2.5rem;
-  color: var(--text-muted);
+  color: var(--text-dark);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -353,7 +355,7 @@ section {
 .hero-btn {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: var(--blue-500);
+  background: var(--navy);
   color: var(--white);
   text-decoration: none;
   font-weight: 600;
@@ -365,7 +367,7 @@ section {
   position: relative;
   overflow: hidden;
   transition: all var(--transition-medium);
-  box-shadow: 0 4px 20px rgba(44, 94, 162, 0.3);
+  box-shadow: 0 4px 20px rgba(35, 54, 82, 0.3);
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1s var(--cubic-bezier) forwards 0.6s;
@@ -378,18 +380,13 @@ section {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.7s;
 }
 
 .hero-btn:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(44, 94, 162, 0.5);
+  box-shadow: 0 8px 30px rgba(35, 54, 82, 0.5);
   background: var(--blue-400);
 }
 
@@ -400,32 +397,37 @@ section {
 /* Section Styles for About, Contact, Survey - Enhanced */
 .about-section,
 .contact-section,
-.survey-section {
-  background: var(--dark-background);
+.survey-section,
+.socials-section {
+  background: var(--light-background);
   position: relative;
+  padding-bottom: 3rem; /* Reduced from 6rem */
 }
 
 .about-section h1,
 .contact-section h1,
-.survey-section h1 {
+.survey-section h1,
+.socials-section h1,
+.webinar-section h1 {
   text-align: center;
   margin-bottom: 3rem;
   font-family: var(--font-heading);
   font-size: 3rem;
-  color: #f5f8fc;
+  color: var(--text-dark);
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  display: block;
 }
 
 .survey-h1 {
-  left: 38% !important;
+  /* Removed the left positioning override */
 }
 
 .about-section h1::after,
 .contact-section h1::after,
-.survey-section h1::after {
+.survey-section h1::after,
+.socials-section h1::after,
+.webinar-section h1::after {
   content: "";
   position: absolute;
   bottom: -10px;
@@ -433,25 +435,32 @@ section {
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: var(--blue-400);
+  background: var(--navy);
 }
 
-.about-description {
-  text-align: center;
+.about-description,
+.socials-description {
+  text-align: left;
   max-width: 800px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 1.5rem;
   font-size: 1.2rem;
-  color: var(--text-muted);
+  color: var(--text-dark);
   line-height: 1.8;
+}
+
+.socials-description {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 /* Section Title - Enhanced */
 .section-title {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   font-size: 2.5rem;
-  color: var(--text-light);
+  color: var(--text-dark);
   position: relative;
+  font-family: var(--font-heading);
 }
 
 .section-title::after {
@@ -462,13 +471,13 @@ section {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: var(--blue-400);
+  background: var(--navy);
 }
 
 /* Team Section - Enhanced */
 .team-section {
-  background: var(--dark-background);
-  padding: 6rem 2rem;
+  background: var(--light-background);
+  padding: 3rem 2rem 6rem; /* Reduced top padding */
 }
 
 .team-container {
@@ -476,10 +485,11 @@ section {
   flex-wrap: wrap;
   gap: 2.5rem;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .team-member {
-  background: var(--card-background);
+  background: var(--navy);
   padding: 2.5rem;
   border-radius: 16px;
   text-align: center;
@@ -489,6 +499,10 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 300px;
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .team-member::before {
@@ -506,8 +520,8 @@ section {
 
 .team-member img {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   margin-bottom: 1.5rem;
   transition: all var(--transition-medium) var(--cubic-bezier);
   border: 4px solid rgba(255, 255, 255, 0.1);
@@ -515,7 +529,7 @@ section {
   object-fit: cover;
 }
 
-.team-member:hover {
+/* .team-member:hover {
   transform: translateY(-15px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
@@ -527,7 +541,7 @@ section {
 .team-member:hover img {
   transform: scale(1.05);
   border-color: var(--blue-400);
-}
+} */
 
 .team-member h3 {
   font-family: var(--font-heading);
@@ -542,6 +556,132 @@ section {
   font-weight: 500;
 }
 
+/* Socials Section - New */
+.socials-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  background: var(--navy);
+  padding: 2rem;
+  border-radius: 16px;
+  text-decoration: none;
+  flex: 1 1 400px;
+  max-width: 450px;
+  transition: all var(--transition-medium) var(--cubic-bezier);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-medium) var(--cubic-bezier);
+}
+
+.social-card.linkedin::before {
+  background: var(--linkedin);
+}
+
+.social-card.instagram::before {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-card.youtube::before {
+  background: var(--youtube);
+}
+
+.social-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.social-card:hover::before {
+  transform: scaleX(1);
+}
+
+.social-icon {
+  flex: 0 0 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  margin-right: 1.5rem;
+  transition: all var(--transition-medium);
+}
+
+.social-card.linkedin .social-icon {
+  color: var(--linkedin);
+}
+
+.social-card.instagram .social-icon {
+  color: var(--instagram);
+}
+
+.social-card.youtube .social-icon {
+  color: var(--youtube);
+}
+
+.social-card:hover .social-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.social-content {
+  flex: 1;
+}
+
+.social-content h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+  font-size: 1.5rem;
+}
+
+.social-content p {
+  font-size: 0.95rem;
+  color: var(--blue-300);
+  margin-bottom: 1rem;
+}
+
+.social-link {
+  display: inline-block;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-medium);
+}
+
+.social-card:hover .social-link {
+  transform: translateX(5px);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform var(--transition-medium);
+}
+
+.social-card:hover .arrow {
+  transform: translateX(5px);
+}
+
 /* Contact Section - Enhanced */
 .contact-info {
   display: flex;
@@ -552,7 +692,7 @@ section {
 }
 
 .contact-item {
-  background: var(--card-background);
+  background: var(--navy);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -606,7 +746,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  background: var(--card-background);
+  background: var(--navy);
   padding: 3rem;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -721,7 +861,7 @@ section {
 
 /* Enhanced Footer */
 footer {
-  background: var(--blue-900);
+  background: var(--navy);
   text-align: center;
   padding: 3rem 2rem;
   color: var(--text-muted);
@@ -738,6 +878,18 @@ footer::before {
   width: 100%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--blue-400), transparent);
+}
+
+.footer-email {
+  color: var(--blue-300);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-medium);
+}
+
+.footer-email:hover {
+  color: var(--blue-200);
+  text-decoration: underline;
 }
 
 /* Animations */
@@ -826,8 +978,8 @@ footer::before {
 
 /* Responsive Design - Enhanced */
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 3rem;
+  .hero-logo {
+    max-height: 400px; /* Increased from 250px */
   }
 
   .hero-subtitle {
@@ -840,7 +992,7 @@ footer::before {
     right: -100%;
     width: 80%;
     height: 100vh;
-    background: var(--blue-900);
+    background: var(--navy);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -869,14 +1021,35 @@ footer::before {
 
   .about-section h1,
   .contact-section h1,
-  .survey-section h1 {
+  .survey-section h1,
+  .socials-section h1,
+  .webinar-section h1 {
     font-size: 2.5rem;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .logo {
+    padding-left: 1rem; /* Reduced padding on mobile */
+  }
+
+  .social-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .social-icon {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.5rem;
+  .hero-logo {
+    max-height: 300px; /* Increased from 200px */
   }
 
   .hero-subtitle {
@@ -890,6 +1063,14 @@ footer::before {
   .contact-form,
   .survey-form {
     padding: 2rem 1.5rem;
+  }
+
+  .logo img {
+    height: 45px;
+  }
+
+  .logo {
+    padding-left: 0.5rem; /* Minimal padding on small mobile */
   }
 }
 
@@ -912,7 +1093,7 @@ footer::before {
 }
 
 .survey-section h1 {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -920,7 +1101,7 @@ footer::before {
 .survey-description {
   font-size: 1rem;
   margin-bottom: 2rem;
-  color: #555;
+  color: var(--text-dark);
 }
 
 .survey-form {
@@ -939,6 +1120,7 @@ footer::before {
   font-weight: 600;
   margin-bottom: 0.5rem;
   font-family: "Open Sans", sans-serif;
+  color: var(--text-light);
 }
 
 .form-group label span {
@@ -958,7 +1140,7 @@ footer::before {
 button[type="submit"] {
   align-self: center;
   padding: 0.75rem 2rem;
-  background-color: #062a85;
+  background-color: var(--navy);
   color: white;
   border: none;
   border-radius: 8px;
@@ -969,7 +1151,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #1c4ed8;
+  background-color: var(--blue-400);
 }
 
 /* Animation support */
@@ -1068,4 +1250,95 @@ button[type="submit"]:hover {
 .scale-radio-group > label > span {
   color: white;
   font-size: 14px;
+}
+
+/* Add section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--navy), transparent);
+  width: 80%;
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+/* Webinar Page Styles */
+.webinar-section {
+  background: var(--light-background);
+  position: relative;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.webinar-section h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--text-dark);
+  position: relative;
+  display: inline-block;
+}
+
+.webinar-section h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--navy);
+}
+
+.webinar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.flyer-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.flyer-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.webinar-flyer {
+  width: 100%;
+  height: auto;
+  max-height: 1000px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .webinar-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .flyer-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .webinar-section h1 {
+    font-size: 2rem;
+  }
+
+  .flyer-container {
+    padding: 10px;
+  }
 }
